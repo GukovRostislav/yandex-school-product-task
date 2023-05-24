@@ -4,7 +4,6 @@ import models, schemas
 import psycopg2
 from database import SessionLocal
 from api import router
-
 from fastapi import FastAPI
 from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
@@ -13,14 +12,15 @@ from fastapi_limiter.depends import RateLimiter
 
 import time
 
-middleware = [
+'''middleware = [
     Middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"]),
     Middleware(FastAPILimiter, key_func=lambda _: "user", rate_limit=10),
 ]
+'''
 
-
-app = FastAPI(docs_url='/', middleware=middleware)
+app = FastAPI(docs_url='/')
 app.include_router(router)
+
 
 def get_db():
     db = SessionLocal()

@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from .couriers import router as courier_router
-from .orders import router as orders_router
+from .couriers.router import router as courier_router
+from .orders.router import router as orders_router
 
 router = APIRouter()
 router.include_router(courier_router)
